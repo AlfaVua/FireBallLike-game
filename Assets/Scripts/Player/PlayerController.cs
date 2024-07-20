@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour, Inputs.IGameActions
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private BulletPool bulletPool;
 
+    private bool isHolding;
     private bool isOnCooldown;
 
     public void OnShoot(InputAction.CallbackContext context)
     {
         Shoot();
+        isHolding = context.performed;
     }
 
     private void Shoot()
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour, Inputs.IGameActions
         isOnCooldown = true;
         yield return new WaitForSeconds(shootCooldown);
         isOnCooldown = false;
+        if (isHolding) Shoot();
     }
 
     private void OnEnable()
