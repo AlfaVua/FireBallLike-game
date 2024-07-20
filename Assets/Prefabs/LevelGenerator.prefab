@@ -52,7 +52,7 @@ MonoBehaviour:
   platformPrefab: {fileID: 2323463886043202491, guid: 0e957c6078f9b924bbfabc63dc726260,
     type: 3}
   bonusChest: {fileID: 9131042723500726527}
-  platformsStartingOffsetY: 1.4
+  platformsStartingOffsetY: 2
 --- !u!1 &1391516872100127564
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1783193671076202355}
+  - component: {fileID: 1288111476687330487}
   m_Layer: 0
   m_Name: Obstacles
   m_TagString: Untagged
@@ -119,6 +120,27 @@ Transform:
   - {fileID: 3928991672003035928}
   m_Father: {fileID: 1337661716401923737}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1288111476687330487
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3091074368211714577}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c86388e6de4061d4aa5fa52ea43ab46a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2909880182171118349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -330,7 +352,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2103083916747652617, guid: 2c43d7b5388ab0148b021538fde1bcbd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
