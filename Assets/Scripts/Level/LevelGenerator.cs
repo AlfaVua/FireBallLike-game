@@ -4,17 +4,18 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField] private Transform container;
-    [SerializeField] private int generateAmount = 10;
     [SerializeField] private GameObject platformPrefab;
-    [SerializeField] private Transform bonusChest;
+    [SerializeField] private ChestModel bonusChest;
     [SerializeField][Min(1)] private float platformsStartingOffsetY = 1;
 
     private List<GameObject> platforms;
-    private void Start()
+
+    public void Init(LevelParameters levelParams)
     {
         platforms = new List<GameObject>();
-        ResetChestPosition(generateAmount);
-        GeneratePlatforms(generateAmount);
+        bonusChest.Init(levelParams.ChestParameters);
+        ResetChestPosition(levelParams.PlatformAmount);
+        GeneratePlatforms(levelParams.PlatformAmount);
     }
 
     private void GeneratePlatforms(int amount)
@@ -28,8 +29,9 @@ public class LevelGenerator : MonoBehaviour
 
     private void ResetChestPosition(float height)
     {
+        var chestPosition = bonusChest.transform.position;
         var y = container.position.y + height * platformsStartingOffsetY;
-        bonusChest.position = new Vector3(bonusChest.position.x, y, bonusChest.position.z);
+        bonusChest.transform.position = new Vector3(chestPosition.x, y, chestPosition.z);
     }
 
     private void GeneratePlatform(float y)

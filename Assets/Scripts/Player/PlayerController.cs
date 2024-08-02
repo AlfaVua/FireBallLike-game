@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, Inputs.IGameActions
@@ -9,8 +10,16 @@ public class PlayerController : MonoBehaviour, Inputs.IGameActions
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private BulletPool bulletPool;
 
+    public readonly UnityEvent<int> onBulletUsed = new UnityEvent<int>();
+
     private bool isHolding;
     private bool isOnCooldown;
+    private int bullets;
+
+    public void Init(LevelParameters levelParameters)
+    {
+        bullets = levelParameters.BulletsAmount;
+    }
 
     public void OnShoot(InputAction.CallbackContext context)
     {
@@ -27,6 +36,7 @@ public class PlayerController : MonoBehaviour, Inputs.IGameActions
         bullet.transform.rotation = Quaternion.identity;
         bullet.Init(15);
         StartCoroutine(nameof(ShootRoutine));
+        onBulletUsed.Invoke(--bullets);
     }
 
     private Bullet CreateOrGetBullet()
@@ -54,5 +64,6 @@ public class PlayerController : MonoBehaviour, Inputs.IGameActions
     private void OnDisable()
     {
         GameControls.UnsubscribeGameEvents(this);
+        isHolding = false;
     }
 }

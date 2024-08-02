@@ -4,5 +4,8 @@ using UnityEngine;
 public class ChestProperties : ScriptableObject
 {
     [SerializeField] private float reward;
-    [SerializeField][Min(1)] private float health;
+    [SerializeField][Min(1)] private int health;
+
+    public float Reward => reward;
+    public int Health => health;
 }

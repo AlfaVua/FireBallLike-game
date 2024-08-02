@@ -1,7 +1,12 @@
 public class GameControls
 {
-    private static readonly Inputs _inputs = new Inputs();
+    private static Inputs _inputs;
     private static ushort _inputEvents = 0;
+
+    public static void Init()
+    {
+        _inputs = new Inputs();
+    }
 
     public static void SubscribeGameEvents(Inputs.IGameActions events)
     {
