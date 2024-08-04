@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour, Inputs.IGameActions
     private bool isOnCooldown;
     private int bullets;
 
+    private bool CantShoot => bullets == 0;
+
     public void Init(LevelParameters levelParameters)
     {
         bullets = levelParameters.BulletsAmount;
@@ -29,7 +31,7 @@ public class PlayerController : MonoBehaviour, Inputs.IGameActions
 
     private void Shoot()
     {
-        if (isOnCooldown) return;
+        if (isOnCooldown || CantShoot) return;
         var bullet = CreateOrGetBullet();
         bullet.gameObject.SetActive(true);
         bullet.transform.position = shootingPoint.position;

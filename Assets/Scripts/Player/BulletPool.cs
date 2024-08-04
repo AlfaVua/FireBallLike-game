@@ -11,8 +11,8 @@ public class BulletPool : MonoBehaviour
 
     public static void MoveBulletToPool(Bullet bullet)
     {
+        bullet.gameObject.SetActive(false);
         bullet.transform.position = Vector3.zero;
         bullet.transform.SetParent(poolContainer);
-        bullet.gameObject.SetActive(false);
     }
 }
