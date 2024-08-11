@@ -8,11 +8,12 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private ChestModel bonusChest;
     [SerializeField][Min(1)] private float platformsStartingOffsetY = 1;
 
-    private List<GameObject> platforms;
+    private List<GameObject> platforms = new List<GameObject>();
+
+    public bool IsChestOpened => bonusChest.GetHealth() == 0;
 
     public void Init(LevelParameters levelParams)
     {
-        platforms = new List<GameObject>();
         bonusChest.Init(levelParams.ChestParameters);
         ResetChestPosition(levelParams.PlatformAmount);
         GeneratePlatforms(levelParams.PlatformAmount);

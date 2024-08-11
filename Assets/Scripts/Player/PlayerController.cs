@@ -15,12 +15,14 @@ public class PlayerController : MonoBehaviour, Inputs.IGameActions
     private bool isHolding;
     private bool isOnCooldown;
     private int bullets;
+    private bool infiniteBullets;
 
-    private bool CantShoot => bullets == 0;
+    public bool CantShoot => !infiniteBullets && bullets == 0;
 
     public void Init(LevelParameters levelParameters)
     {
         bullets = levelParameters.BulletsAmount;
+        infiniteBullets = bullets == 0;
     }
 
     public void OnShoot(InputAction.CallbackContext context)

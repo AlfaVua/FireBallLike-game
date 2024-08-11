@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4999628332927934432}
   - component: {fileID: 6600334712117203218}
   - component: {fileID: 8932102009854432983}
+  - component: {fileID: 6214568033218066829}
   m_Layer: 6
   m_Name: Cannonball
   m_TagString: Untagged
@@ -162,6 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
   - {fileID: 8932102009854432983}
+  - {fileID: 6214568033218066829}
   executeNextFrame: 1
   collideWith:
     serializedVersion: 2
@@ -193,3 +195,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6214568033218066829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4827110650264498223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72d4ce0d51a8bd42818b2ab6fd9afb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: 0
