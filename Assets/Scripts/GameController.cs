@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerController player;
     [SerializeField] private LevelGenerator generator;
     [SerializeField] private UIController uiController;
+    [SerializeField] private AudioSource globalAudioSource;
 
     private int activeBullets = 0;
     private float levelStartTime;
@@ -13,7 +14,9 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         GameControls.Init();
+        GlobalAudioPlayer.SetSource(globalAudioSource);
         uiController.Init();
+        globalAudioSource = null;
     }
 
     private void RestartSelectedLevel()
@@ -31,7 +34,7 @@ public class GameController : MonoBehaviour
         levelStartTime = Time.realtimeSinceStartup;
     }
 
-    private void OnBulletUsed(int bulletsLeft)
+    private void OnBulletShot(int bulletsLeft)
     {
         if (selectedLevel.BulletsAmount == 0) return;
         uiController.GameUI.SetBulletsAmount(bulletsLeft);
@@ -48,19 +51,20 @@ public class GameController : MonoBehaviour
 
     private void OnBulletDestroyed()
     {
-        if (player.CantShoot && --activeBullets == 0) EndLevel();
+        activeBullets--;
+        if (player.CantShoot && activeBullets == 0) EndLevel();
     }
 
     private void OnEnable()
     {
-        player.onBulletUsed.AddListener(OnBulletUsed);
+        player.onBulletShot.AddListener(OnBulletShot);
         GlobalEvents.Subscribe(EventName.BulletDestroyed, OnBulletDestroyed);
         GlobalEvents.Subscribe(EventName.RestartLevel, RestartSelectedLevel);
     }
 
     private void OnDisable()
     {
-        player.onBulletUsed.RemoveListener(OnBulletUsed);
+        player.onBulletShot.RemoveListener(OnBulletShot);
         GlobalEvents.Unsubscribe(EventName.BulletDestroyed, OnBulletDestroyed);
         GlobalEvents.Unsubscribe(EventName.RestartLevel, RestartSelectedLevel);
     }

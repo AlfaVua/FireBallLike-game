@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour, Inputs.IGameActions
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private BulletPool bulletPool;
 
-    public readonly UnityEvent<int> onBulletUsed = new UnityEvent<int>();
+    public readonly UnityEvent<int> onBulletShot = new UnityEvent<int>();
 
     private bool isHolding;
     private bool isOnCooldown;
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour, Inputs.IGameActions
         bullet.transform.rotation = Quaternion.identity;
         bullet.Init(15);
         StartCoroutine(nameof(ShootRoutine));
-        onBulletUsed.Invoke(--bullets);
+        onBulletShot.Invoke(--bullets);
     }
 
     private Bullet CreateOrGetBullet()
