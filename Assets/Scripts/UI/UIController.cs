@@ -5,19 +5,23 @@ public class UIController : MonoBehaviour
     [SerializeField] private MainGameUI mainGameUI;
     [SerializeField] private GameOverUI gameOverUI;
     [SerializeField] private MainUI mainUI;
+    [SerializeField] private SettingsUI settingsUI;
     public MainGameUI GameUI => mainGameUI;
     private BaseUI _activeUI;
 
-    public void Init()
+    public void Init(GameController gameController)
     {
         mainUI.Init(this);
+        settingsUI.Init();
         ShowMainUI();
-        AddListeners();
+        AddListeners(gameController);
     }
 
-    private void AddListeners()
+    private void AddListeners(GameController gameController)
     {
         gameOverUI.CloseClicked.AddListener(ShowMainUI);
+        settingsUI.CloseClicked.AddListener(ShowMainUI);
+        settingsUI.OnLevelSelected.AddListener(gameController.ChangeLevel);
     }
 
     public void ShowGameUI()
@@ -38,7 +42,7 @@ public class UIController : MonoBehaviour
 
     public void ShowSettingsUI()
     {
-        
+        ShowUI(settingsUI);
     }
 
     private void ShowUI(BaseUI ui)

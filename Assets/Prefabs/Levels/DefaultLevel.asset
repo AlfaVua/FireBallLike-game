@@ -16,3 +16,4 @@ MonoBehaviour:
   platforms: 10
   secondsForStar: 
   chest: {fileID: 11400000, guid: 55fc05582108b184fad92f21ded21b6c, type: 2}
+  title: Default

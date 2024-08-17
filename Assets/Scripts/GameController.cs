@@ -15,8 +15,13 @@ public class GameController : MonoBehaviour
     {
         GameControls.Init();
         GlobalAudioPlayer.SetSource(globalAudioSource);
-        uiController.Init();
+        uiController.Init(this);
         globalAudioSource = null;
+    }
+
+    public void ChangeLevel(LevelParameters newLevel)
+    {
+        selectedLevel = newLevel;
     }
 
     private void RestartSelectedLevel()
@@ -26,7 +31,7 @@ public class GameController : MonoBehaviour
 
     private void StartLevel(LevelParameters level)
     {
-        selectedLevel = level;
+        ChangeLevel(level);
         uiController.ShowGameUI();
         uiController.GameUI.SetBulletsAmount(selectedLevel.BulletsAmount);
         generator.Init(selectedLevel);
