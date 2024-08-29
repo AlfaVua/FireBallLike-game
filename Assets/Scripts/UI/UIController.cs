@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class UIController : MonoBehaviour
 {
     [SerializeField] private MainGameUI mainGameUI;
-    [SerializeField] private GameOverUI gameOverUI;
+    [SerializeField] private EndLevelUI endLevelUI;
     [SerializeField] private MainUI mainUI;
     [SerializeField] private SettingsUI settingsUI;
     public MainGameUI GameUI => mainGameUI;
@@ -19,7 +20,7 @@ public class UIController : MonoBehaviour
 
     private void AddListeners(GameController gameController)
     {
-        gameOverUI.CloseClicked.AddListener(ShowMainUI);
+        endLevelUI.CloseClicked.AddListener(ShowMainUI);
         settingsUI.CloseClicked.AddListener(ShowMainUI);
         settingsUI.OnLevelSelected.AddListener(gameController.ChangeLevel);
     }
@@ -29,10 +30,10 @@ public class UIController : MonoBehaviour
         ShowUI(mainGameUI);
     }
 
-    public void ShowGameOverUI(OverUIState state, float endTime)
+    public void ShowEndLevelUI(EndLevelUIState state, float endTime, LevelParameters level)
     {
-        ShowUI(gameOverUI);
-        gameOverUI.Draw(state, endTime);
+        ShowUI(endLevelUI);
+        endLevelUI.Draw(state, endTime, level);
     }
 
     public void ShowMainUI()

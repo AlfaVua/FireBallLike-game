@@ -14,15 +14,15 @@ public class PlayerController : MonoBehaviour, Inputs.IGameActions
 
     private bool isHolding;
     private bool isOnCooldown;
-    private int bullets;
+    private int bulletsLeft;
     private bool infiniteBullets;
 
-    public bool CantShoot => !infiniteBullets && bullets == 0;
+    public bool CantShoot => !infiniteBullets && bulletsLeft == 0;
 
     public void Init(LevelParameters levelParameters)
     {
-        bullets = levelParameters.BulletsAmount;
-        infiniteBullets = bullets == 0;
+        bulletsLeft = levelParameters.BulletsAmount;
+        infiniteBullets = bulletsLeft == 0;
     }
 
     public void OnShoot(InputAction.CallbackContext context)
@@ -40,16 +40,12 @@ public class PlayerController : MonoBehaviour, Inputs.IGameActions
         bullet.transform.rotation = Quaternion.identity;
         bullet.Init(15);
         StartCoroutine(nameof(ShootRoutine));
-        onBulletShot.Invoke(--bullets);
+        onBulletShot.Invoke(--bulletsLeft);
     }
 
     private Bullet CreateOrGetBullet()
     {
-        var poolBullets = bulletPool.transform.childCount;
-        if (poolBullets == 0) return Instantiate(bulletPrefab);
-        var bullet = bulletPool.transform.GetChild(0).GetComponent<Bullet>(); 
-        bullet.transform.SetParent(null);
-        return bullet;
+        return BulletPool.HasBulletsInPool ? BulletPool.GetFirstBulletInPool() : Instantiate(bulletPrefab);
     }
 
     private IEnumerator ShootRoutine()

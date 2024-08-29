@@ -40,17 +40,6 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""b136dddc-4206-489d-ad27-88842efddddb"",
-                    ""path"": ""<Touchscreen>/touch0/indirectTouch"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""06e52ebf-c37a-4d9f-9f71-27bed86e787f"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -64,6 +53,17 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""f727b9fc-1a9b-4c28-bad8-3f4f55f8f440"",
                     ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a1f8a19-959e-4c19-8bd9-dd5d5548b076"",
+                    ""path"": ""<Touchscreen>/Press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

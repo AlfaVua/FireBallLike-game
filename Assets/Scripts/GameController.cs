@@ -31,6 +31,8 @@ public class GameController : MonoBehaviour
 
     private void StartLevel(LevelParameters level)
     {
+        BulletPool.Clear();
+        player.gameObject.SetActive(true);
         ChangeLevel(level);
         uiController.ShowGameUI();
         uiController.GameUI.SetBulletsAmount(selectedLevel.BulletsAmount);
@@ -48,9 +50,10 @@ public class GameController : MonoBehaviour
 
     private void EndLevel()
     {
-        uiController.ShowGameOverUI(
-            generator.IsChestOpened ? OverUIState.COMPLETE : OverUIState.LOST, 
-            Time.realtimeSinceStartup - levelStartTime
+        player.gameObject.SetActive(false);
+        uiController.ShowEndLevelUI(
+            generator.IsChestOpened ? EndLevelUIState.COMPLETE : EndLevelUIState.LOST, 
+            Time.realtimeSinceStartup - levelStartTime, selectedLevel
             );
     }
 
@@ -65,6 +68,7 @@ public class GameController : MonoBehaviour
         player.onBulletShot.AddListener(OnBulletShot);
         GlobalEvents.Subscribe(EventName.BulletDestroyed, OnBulletDestroyed);
         GlobalEvents.Subscribe(EventName.RestartLevel, RestartSelectedLevel);
+        GlobalEvents.Subscribe(EventName.LevelWon, EndLevel);
     }
 
     private void OnDisable()
@@ -72,5 +76,6 @@ public class GameController : MonoBehaviour
         player.onBulletShot.RemoveListener(OnBulletShot);
         GlobalEvents.Unsubscribe(EventName.BulletDestroyed, OnBulletDestroyed);
         GlobalEvents.Unsubscribe(EventName.RestartLevel, RestartSelectedLevel);
+        GlobalEvents.Unsubscribe(EventName.LevelWon, EndLevel);
     }
 }

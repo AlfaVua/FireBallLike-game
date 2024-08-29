@@ -1427,6 +1427,7 @@ MonoBehaviour:
   animator: {fileID: 4313219389077369696}
   levelList:
   - {fileID: 11400000, guid: 5a7213bb91eaaa14da15b61ccb712c28, type: 2}
+  - {fileID: 11400000, guid: 5270ccf3a1e3d8248a064d1bd57dbd5b, type: 2}
   - {fileID: 11400000, guid: dd6a0428957002d4a916e252356efcae, type: 2}
   levelLoader: {fileID: 5460567859824170487}
   closeButton: {fileID: 7265769996125152462}

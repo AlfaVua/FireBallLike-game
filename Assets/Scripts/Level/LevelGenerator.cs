@@ -5,16 +5,23 @@ public class LevelGenerator : MonoBehaviour
 {
     [SerializeField] private Transform container;
     [SerializeField] private GameObject platformPrefab;
-    [SerializeField] private ChestModel bonusChest;
+    [SerializeField] private ChestModel chestPrefab;
     [SerializeField][Min(1)] private float platformsStartingOffsetY = 1;
+
+    private ChestModel activeChest;
 
     private List<GameObject> platforms = new List<GameObject>();
 
-    public bool IsChestOpened => bonusChest.GetHealth() == 0;
+    public bool IsChestOpened => activeChest.IsHealthAtZero;
 
     public void Init(LevelParameters levelParams)
     {
-        bonusChest.Init(levelParams.ChestParameters);
+        if (activeChest)
+        {
+            Destroy(activeChest.gameObject);
+        }
+        activeChest = Instantiate(chestPrefab, transform);
+        activeChest.Init(levelParams.ChestParameters);
         ResetChestPosition(levelParams.PlatformAmount);
         GeneratePlatforms(levelParams.PlatformAmount);
     }
@@ -28,11 +35,11 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    private void ResetChestPosition(float height)
+    private void ResetChestPosition(float totalPlatforms)
     {
-        var chestPosition = bonusChest.transform.position;
-        var y = container.position.y + height * platformsStartingOffsetY;
-        bonusChest.transform.position = new Vector3(chestPosition.x, y, chestPosition.z);
+        var containerPosition = container.transform.position;
+        var y = container.position.y + totalPlatforms * platformsStartingOffsetY;
+        activeChest.transform.position = new Vector3(containerPosition.x, y, containerPosition.z);
     }
 
     private void GeneratePlatform(float y)

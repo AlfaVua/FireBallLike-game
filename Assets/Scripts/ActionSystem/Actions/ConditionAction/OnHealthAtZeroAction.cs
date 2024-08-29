@@ -1,8 +1,8 @@
 public class OnHealthAtZeroAction : ConditionExecuteAction
 {
-    public ChestModel target;
+    public HealthComponent target;
     protected override bool Condition()
     {
-        return target.GetHealth() == 0;
+        return target.Health == 0;
     }
 }

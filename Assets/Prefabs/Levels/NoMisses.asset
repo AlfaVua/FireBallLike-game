@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletsAmount: 11
   platforms: 10
-  secondsForStar: 
+  secondsForStar: 3c0000001e00000014000000
   chest: {fileID: 11400000, guid: b3c1fc068205ab84693ba07d8d233bf3, type: 2}
   title: No Misses

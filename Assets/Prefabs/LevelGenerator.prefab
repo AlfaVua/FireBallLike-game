@@ -48,10 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 2859935186434249746}
-  generateAmount: 10
   platformPrefab: {fileID: 2323463886043202491, guid: 0e957c6078f9b924bbfabc63dc726260,
     type: 3}
-  bonusChest: {fileID: 4274927262579860054}
+  chestPrefab: {fileID: 7452203982754694635, guid: 2c43d7b5388ab0148b021538fde1bcbd,
+    type: 3}
   platformsStartingOffsetY: 2
 --- !u!1 &1391516872100127564
 GameObject:
@@ -358,18 +358,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c43d7b5388ab0148b021538fde1bcbd, type: 3}
---- !u!114 &4274927262579860054 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7452203982754694635, guid: 2c43d7b5388ab0148b021538fde1bcbd,
-    type: 3}
-  m_PrefabInstance: {fileID: 6645091744174892989}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fc002da417041f5a07d22f1af5779ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &9131042723500726527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2490456789930344258, guid: 2c43d7b5388ab0148b021538fde1bcbd,

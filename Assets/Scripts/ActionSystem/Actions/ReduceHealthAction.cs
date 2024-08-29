@@ -2,7 +2,7 @@
 
     public class ReduceHealthAction : ActionBase
     {
-        [SerializeField] private ChestModel target;
+        [SerializeField] private HealthComponent target;
 
         public override void Execute()
         {

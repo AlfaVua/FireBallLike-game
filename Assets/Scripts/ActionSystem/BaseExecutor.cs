@@ -9,7 +9,7 @@ public class BaseExecutor : MonoBehaviour
 
     public void Execute()
     {
-        if (executeNextFrame ) StartCoroutine(nameof(DelayedExecute));
+        if (executeNextFrame) StartCoroutine(nameof(DelayedExecute));
         else ExecuteAll();
     }
 

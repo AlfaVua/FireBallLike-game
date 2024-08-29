@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainGameUI: {fileID: 4722202948775823109}
-  gameOverUI: {fileID: 638267270258949711}
+  endLevelUI: {fileID: 638267270258949711}
   mainUI: {fileID: 7403898582816631740}
   settingsUI: {fileID: 1970549427574348581}
 --- !u!1001 &1788409190651450004
@@ -515,7 +515,7 @@ PrefabInstance:
     - target: {fileID: 8988184692546016682, guid: 51dfc607ed8403341b5209859a19ab70,
         type: 3}
       propertyPath: m_Name
-      value: GameOverUI
+      value: EndLevelUI
       objectReference: {fileID: 0}
     - target: {fileID: 8988184692546016682, guid: 51dfc607ed8403341b5209859a19ab70,
         type: 3}

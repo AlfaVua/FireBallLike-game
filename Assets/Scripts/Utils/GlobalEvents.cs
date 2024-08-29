@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public static class GlobalEvents
 {
@@ -20,6 +21,7 @@ public static class GlobalEvents
 
     public static void Call(EventName eventName)
     {
+        Debug.Log(eventName);
         events[eventName]?.ForEach(action => action.Invoke());
     }
 }
@@ -27,5 +29,6 @@ public static class GlobalEvents
 public enum EventName
 {
     BulletDestroyed,
-    RestartLevel
+    RestartLevel,
+    LevelWon,
 }
